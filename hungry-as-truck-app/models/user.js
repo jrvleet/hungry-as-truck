@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
 
 var userSchema = new mongoose.Schema({
   email:   String,
-  isTruckOwner? : Boolean,
+  isTruckOwner: Boolean,
   trucks: Array
 });
 
