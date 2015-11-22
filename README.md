@@ -1,9 +1,9 @@
 #Hungry As Truck ⚡
 
 ####Contributors:
-- @ademars94  
-- @banando / Fernando Orozco
-- @robgonnella  
-- @richard-gutierrez  
-- @maximusoldham  
-- @jrvleet
+- Alex DeMars | @ademars94
+- Fernando Orozco | @banando
+- Rob Gonnella | @robgonnella  
+- Richard Gutierrez | @richard-gutierrez  
+- Max Oldham | @maximusoldham  
+- Jessica Vliet | @jrvleet
