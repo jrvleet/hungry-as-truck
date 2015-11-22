@@ -6,7 +6,7 @@ var truckSchema = new mongoose.Schema({
   location: String,
   duration: String,
   isActive? : Boolean,
-  category: Boolean,
+  category: String,
   ownerId: String,
   likes: Array
 });
