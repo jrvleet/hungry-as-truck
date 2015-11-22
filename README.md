@@ -1,4 +1,4 @@
-#Hungry As Truck
+#Hungry As Truck ⚡
 
 ####Contributors:
 @ademars94  
