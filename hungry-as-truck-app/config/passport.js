@@ -1,11 +1,11 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
-var User = require('../models/users');
+var User = require('../models/user');
 
 module.exports = function(passport) {
   passport.use(new FacebookStrategy({
-      clientID: FACEBOOK_APP_ID,
-      clientSecret: FACEBOOK_APP_SECRET,
-      callbackURL: FB_CB_URL,
+      clientID: process.env.FACEBOOK_APP_ID,
+      clientSecret: process.env.FACEBOOK_APP_SECRET,
+      callbackURL: process.env.FB_CB_URL,
       profileFields: ['id', 'displayName', 'photos'],
       enableProof: false
     },
@@ -15,4 +15,12 @@ module.exports = function(passport) {
       });
     }
   ));
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
 }
