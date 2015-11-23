@@ -4,17 +4,17 @@ var User = require('./models/user');
 var Truck = require('./models/truck');
 
 var users = [
-  { // 0
+  {
     email:   "fakeUser@gmail.com",
     isTruckOwner: false,
     trucks: []
   },
-  { // 1
+  {
     email:   "fauxProfile@gmail.com",
     isTruckOwner: false,
     trucks: []
   },
-  { // 1
+  {
     email:   "falseAccount@gmail.com",
     isTruckOwner: false,
     trucks: []
@@ -46,7 +46,7 @@ var trucks = [
     duration: "3 Hours",
     isActive: true,
     category: "Mexican",
-    ownerId: "567uhgt54er4edfgyuik",
+    ownerId: "09jn87b5vc543s",
     likes: []
   }
 ];

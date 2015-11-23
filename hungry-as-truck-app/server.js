@@ -5,6 +5,14 @@ var logger       = require('morgan');
 var bodyParser   = require('body-parser');
 var debug        = require('debug')('app:http');
 var cookieParser = require('cookie-parser');
+var session      = require('express-session');
+var passport     = require('passport');
+
+// Load environment variables
+require('dotenv').load();
+
+// Connect to MongoDB
+require('./config/database');
 
 // Load local libraries.
 var env      = require('./config/environment'),
@@ -32,6 +40,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cookieParser('notsosecretnowareyou'));
+app.use(session({
+  secret: 'WDIRocks!',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // Routing layers: favicon, static assets, dynamic routes, or 404…
 
