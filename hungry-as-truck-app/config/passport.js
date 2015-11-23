@@ -1,5 +1,6 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
-var User = require('../models/user');
+var HungryPerson = require('../models/hungryperson');
+var TruckOwner = require('../models/truckowner');
 
 module.exports = function(passport) {
   passport.use(new FacebookStrategy({
@@ -19,7 +20,7 @@ module.exports = function(passport) {
     done(null, user.id);
   });
   passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
+    HungryPerson.findById(id, function(err, user) {
       done(err, user);
     });
   });

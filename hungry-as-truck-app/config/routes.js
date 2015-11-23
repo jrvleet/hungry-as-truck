@@ -3,7 +3,8 @@ var express = require('express'),
 
 // Require controllers.
 var welcomeController = require('../controllers/welcome');
-var usersController   = require('../controllers/users');
+var hungryPeopleController   = require('../controllers/hungrypeople');
+var truckOwnersController   = require('../controllers/truckowners');
 
 module.exports = function(app, passport) {
 
@@ -24,8 +25,10 @@ module.exports = function(app, passport) {
   router.get('/', welcomeController.index);
 
   // users resource paths:
-  router.get('/users',     usersController.index);
-  router.get('/users/:id', usersController.show);
+  router.get('/people',     hungryPeopleController.index);
+  router.get('/people/:id', hungryPeopleController.show);
+  router.get('/truckowners',     truckOwnersController.index);
+  router.get('/truckowners/:id', truckOwnersController.show);
 
   app.use('/api', router);
 }
