@@ -3,14 +3,19 @@
 <head>
   <%- include('../partials/head') %>
 </head>
+<header>
+<%- include('../partials/header') %>
+</header>
 <body>
-  <%- include('../partials/header', {subHeading: 'Welcome'}) %>
+  <h1>Welcome to Hungry as Truck</h1>
 
 
   <main>
-    <ul>
-      <li><a href="/users">Visit the user list.</a></li>
-    </ul>
+  <div class="buttons">
+  <button class="btn btn-default">Sign Up</button>
+  <button class="btn btn-default">Log In</button>
+  </div>
+    
   </main>
 
   <div id="map"></div>
