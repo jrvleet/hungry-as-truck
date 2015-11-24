@@ -8,6 +8,7 @@ module.exports = function(passport) {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
       callbackURL: process.env.FB_CB_URL,
+      auth_type: "reauthenticate",
       profileFields: ['id', 'displayName', 'photos', 'email'],
       enableProof: true
     },
