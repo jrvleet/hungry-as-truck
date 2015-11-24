@@ -2,12 +2,12 @@ var mongoose = require('mongoose'),
     debug    = require('debug')('app:models');
 
 var truckSchema = new mongoose.Schema ({
-  location: String,
   name: String,
-  menu: String,
+  location: String,
+  isActive: Boolean,
+  duration: String,
   category: Array,
-  duration: Number,
-  isActive: Boolean
+  menu: String,
 })
 
 var truckOwnerSchema = new mongoose.Schema({

@@ -1,76 +1,86 @@
 var mongoose = require('./config/database');
 
-var User = require('./models/user');
-var Truck = require('./models/truck');
+var HungryPerson = require('./models/hungryperson');
+var TruckOwner = require('./models/truckowner');
 
-var users = [
+var truckowners = [
   {
+    orgName: "food truck inc.",
+    address: "123 street place",
+    email:   "fakeTrucker@gmail.com",
+    trucks: [ {
+      name:     "Baby's Badass Burgers",
+      location: "The Reef",
+      isActive: true,
+      duration: "2 Hours",
+      category: "American"
+    } ]
+  },
+  {
+    orgName: "meals on wheels",
+    address: "456 second st",
+    email:   "fauxTrucker@gmail.com",
+    trucks: [{
+      name: "The Grilled Cheese Truck",
+      location: "The Reef",
+      duration: "4 Hours",
+      isActive: true,
+      category: "American"
+    }]
+  },
+  {
+    orgName: "pop up food",
+    email:   "falseTrucker@gmail.com",
+    trucks: [
+    {
+      name: "Juana La Cubana",
+      location: "The Reef",
+      duration: "3 Hours",
+      isActive: true,
+      category: "Mexican"
+    }]
+  }
+];
+var hungryperson = [
+  {
+    name:    "Fake User",
     email:   "fakeUser@gmail.com",
-    isTruckOwner: false,
-    trucks: []
+    photo:   ["http://spinoff.comicbookresources.com/wp-content/uploads/2014/06/mr-t.jpeg"]
   },
   {
+    name:    "Faux Profile",
     email:   "fauxProfile@gmail.com",
-    isTruckOwner: false,
-    trucks: []
+    photo:   ["https://i.ytimg.com/vi/CMv0V9LqLRo/hqdefault.jpg"]
   },
   {
+    name:    "False Account",
     email:   "falseAccount@gmail.com",
-    isTruckOwner: false,
-    trucks: []
+    photo:   ["https://media3.giphy.com/media/U7P2vnWfPkIQ8/200_s.gif"]
+
   }
 ];
 
-var trucks = [
-  {
-    name: "Baby's Badass Burgers",
-    location: "The Reef",
-    duration: "2 Hours",
-    isActive: true,
-    category: "American",
-    ownerId: "982hiufj938fmi3fdf3",
-    likes: []
-  },
-  {
-    name: "The Grilled Cheese Truck",
-    location: "The Reef",
-    duration: "4 Hours",
-    isActive: true,
-    category: "American",
-    ownerId: "567uhgt54er4edfgyuik",
-    likes: []
-  },
-  {
-    name: "Juana La Cubana",
-    location: "The Reef",
-    duration: "3 Hours",
-    isActive: true,
-    category: "Mexican",
-    ownerId: "09jn87b5vc543s",
-    likes: []
-  }
-];
 
-User.remove({}, function(err) {
+HungryPerson.remove({}, function(err) {
   if (err) console.log(err);
-  User.create(users, function(err, users) {
+  HungryPerson.create(hungryperson, function(err, hungryperson) {
     if (err) {
       console.log(err);
     } else {
-      console.log("Access Granted: Database seeded with " + users.length  + " users.");
-      mongoose.disconnect();
+      console.log("Access Granted: Database seeded with " + hungryperson.length  + " users.");
+      TruckOwner.remove({}, function(err) {
+        if (err) console.log(err);
+        TruckOwner.create(truckowners, function(err, truckowners) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("Access Granted: Database seeded with " + truckowners.length  + " truck owners.");
+            mongoose.disconnect();
+          }
+        });
+      });
     }
   });
 });
 
-Truck.remove({}, function(err) {
-  if (err) console.log(err);
-  Truck.create(trucks, function(err, trucks) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("Access Granted: Database seeded with " + trucks.length  + " trucks.");
-      mongoose.disconnect();
-    }
-  });
-});
+
