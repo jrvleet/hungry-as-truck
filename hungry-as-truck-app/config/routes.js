@@ -3,13 +3,30 @@ var express = require('express'),
 
 // Require controllers.
 var welcomeController = require('../controllers/welcome');
-var usersController   = require('../controllers/users');
+var hungryPeopleController   = require('../controllers/hungrypeople');
+var truckOwnersController   = require('../controllers/truckowners');
 
-// root path:
-router.get('/', welcomeController.index);
+module.exports = function(app, passport) {
+  // define an Express router to use with ALL ('/') routes
+  app.use('/', router);
 
-// users resource paths:
-router.get('/users',     usersController.index);
-router.get('/users/:id', usersController.show);
+  // oauth paths:
+  router.get('/auth/facebook',
+    passport.authenticate('facebook', {scope: ['email']}));
 
-module.exports = router;
+  router.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
+    function(req, res) {
+      // Successful authentication, redirect home.
+      res.redirect('/');
+  });
+
+  // root path:
+  router.get('/', welcomeController.index);
+
+  // users resource paths:
+  router.get('/hungrypeople',     hungryPeopleController.index);
+  router.get('/hungrypeople/:id', hungryPeopleController.show);
+  router.get('/truckowners',      truckOwnersController.index);
+  router.get('/truckowners/:id',  truckOwnersController.show);
+};

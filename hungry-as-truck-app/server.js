@@ -16,8 +16,7 @@ require('./config/database');
 
 // Load local libraries.
 var env      = require('./config/environment'),
-    mongoose = require('./config/database'),
-    routes   = require('./config/routes');
+    mongoose = require('./config/database');
 
 // Instantiate a server application.
 var app = express();
@@ -58,8 +57,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Useful for debugging the state of requests.
 app.use(debugReq);
 
-// Defines all of our "dynamic" routes.
-app.use('/', routes);
+// Configure passport authentication and
+// load user on to request object if exists.
+require('./config/passport')(passport);
+
+// Defines all of our "dynamic" routes, passing
+// configured passport object.
+require('./config/routes')(app, passport);
 
 // Catches all 404 routes.
 app.use(function(req, res, next) {
@@ -80,6 +84,7 @@ app.use(function(err, req, res, next) {
 });
 
 function debugReq(req, res, next) {
+  debug('REQ: ..............');
   debug('params:', req.params);
   debug('query:',  req.query);
   debug('body:',   req.body);
