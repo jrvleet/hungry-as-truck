@@ -15,10 +15,10 @@ a:active {
   color: #bdc3c7;
 }
 
-.navbar-default { 
+.navbar-default {
 	color: #9b59b6;
-	background-color: #f39c12; 
-	border-color: #f39c12; 
+	background-color: #f39c12;
+	border-color: #f39c12;
 }
 
 .btn-btn-default {
@@ -39,7 +39,7 @@ a:active {
 	/*.icon-bar { height: 3px; }*/
 }
 
-#logo-name {	
+#logo-name {
   color: #ecf0f1;
 }
 
@@ -70,7 +70,8 @@ a { color: #ecf0f1; }
 
 #map {
   height: 100%;
+  margin-bottom: 50px;
 }
 
-a { color: #00B7FF; }
+
 
