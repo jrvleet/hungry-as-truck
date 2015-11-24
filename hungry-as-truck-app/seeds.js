@@ -75,8 +75,8 @@ HungryPerson.remove({}, function(err) {
             console.log(err);
           } else {
             console.log("Access Granted: Database seeded with " + truckowners.length  + " truck owners.");
-            mongoose.disconnect();
           }
+          mongoose.disconnect();
         });
       });
     }
