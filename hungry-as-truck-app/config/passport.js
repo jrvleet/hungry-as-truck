@@ -3,6 +3,7 @@ var HungryPerson = require('../models/hungryperson');
 var TruckOwner = require('../models/truckowner');
 
 module.exports = function(passport) {
+
   passport.use(new FacebookStrategy({
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
@@ -11,14 +12,16 @@ module.exports = function(passport) {
       enableProof: false
     },
     function(accessToken, refreshToken, profile, done) {
-      User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      HungryPerson.findOrCreate({ facebookId: profile.id }, function (err, user) {
         return done(err, user);
       });
     }
   ));
+
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
+
   passport.deserializeUser(function(id, done) {
     HungryPerson.findById(id, function(err, user) {
       done(err, user);
