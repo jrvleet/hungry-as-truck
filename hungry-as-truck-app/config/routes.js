@@ -12,7 +12,7 @@ module.exports = function(app, passport) {
 
   // oauth paths:
   router.get('/auth/facebook',
-    passport.authenticate('facebook', {scope: ['email']}));
+    passport.authenticate('facebook', {authType: 'reauthenticate', scope: ['email']}));
 
   router.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/login' }),
@@ -20,6 +20,7 @@ module.exports = function(app, passport) {
       // Successful authentication, redirect home.
       res.redirect('/');
   });
+
   // logout path
   router.get('/logout', function(req, res){
     req.logout();
@@ -32,7 +33,7 @@ module.exports = function(app, passport) {
   }
 
   // root path:
-  router.get('/', welcomeController.index);
+  router.get('/',welcomeController.index, ensureAuthenticated);
 
   // users resource paths:
   router.get('/hungrypeople',     hungryPeopleController.index);

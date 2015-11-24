@@ -7,5 +7,5 @@ var index = function(req, res, next) {
 // });
 
 module.exports = {
-  index: index
+  index: index,
 };
