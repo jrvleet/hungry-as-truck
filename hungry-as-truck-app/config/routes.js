@@ -20,6 +20,16 @@ module.exports = function(app, passport) {
       // Successful authentication, redirect home.
       res.redirect('/');
   });
+  // logout path
+  router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
+
+  function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) { return next(); }
+    res.redirect('/login')
+  }
 
   // root path:
   router.get('/', welcomeController.index);
