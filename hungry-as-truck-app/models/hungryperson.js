@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 
 var hungryPersonSchema = new mongoose.Schema({
   facebookId: String,
+  photo: String,
   name: String,
   email:   String,
   favs: Array
