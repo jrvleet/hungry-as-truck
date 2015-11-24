@@ -24,6 +24,7 @@ module.exports = function(passport) {
                 if (!user) {
                   eval(locus);
                     user = new HungryPerson({
+                        photo: profile.photos[0].value,
                         name: profile.displayName,
                         email: profile.emails[0].value,
                         facebookId: profile.id
