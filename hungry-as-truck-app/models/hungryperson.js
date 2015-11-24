@@ -2,6 +2,7 @@ var mongoose = require('mongoose'),
     debug    = require('debug')('app:models');
 
 var hungryPersonSchema = new mongoose.Schema({
+  facebookId: String,
   name: String,
   email:   String,
   favs: Array

@@ -1,6 +1,7 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
 var HungryPerson = require('../models/hungryperson');
 var TruckOwner = require('../models/truckowner');
+var locus = require('locus');
 
 module.exports = function(passport) {
 
@@ -8,15 +9,36 @@ module.exports = function(passport) {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
       callbackURL: process.env.FB_CB_URL,
-      profileFields: ['id', 'displayName', 'photos'],
-      enableProof: false
+      profileFields: ['id', 'displayName', 'photos', 'email'],
+      enableProof: true
     },
     function(accessToken, refreshToken, profile, done) {
-      HungryPerson.findOrCreate({ facebookId: profile.id }, function (err, user) {
-        return done(err, user);
-      });
-    }
-  ));
+            //check user table for anyone with a facebook ID of profile.id
+            HungryPerson.findOne({
+                facebookId: profile.id
+            }, function(err, user) {
+                if (err) {
+                    return done(err);
+                }
+                //No user was found... so create a new user with values from Facebook (all the profile. stuff)
+                if (!user) {
+                  eval(locus);
+                    user = new HungryPerson({
+                        name: profile.displayName,
+                        email: profile.emails[0].value,
+                        facebookId: profile.id
+                    });
+                    user.save(function(err) {
+                        if (err) console.log(err);
+                        return done(err, user);
+                    });
+                } else {
+                    //found user. Return
+                    return done(err, user);
+                }
+            });
+        }
+    ));
 
   passport.serializeUser(function(user, done) {
     done(null, user.id);
