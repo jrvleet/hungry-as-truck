@@ -31,6 +31,9 @@ a:active {
 	padding: 50px;
 	margin: 40px;
 }
+#logout {
+  float: right;
+}
 
 .navbar-toggle,
 .navbar-toggle:hover {
@@ -51,6 +54,7 @@ a:active {
   	letter-spacing: .11em;
   	margin-bottom: -1px;
 }
+
 
 body {
   background-color: #c0392b;
