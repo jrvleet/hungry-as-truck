@@ -21,7 +21,6 @@ module.exports = function(passport) {
                 }
                 //No user was found... so create a new user with values from Facebook (all the profile. stuff)
                 if (!user) {
-                  eval(locus);
                     user = new HungryPerson({
                         photo: profile.photos[0].value,
                         name: profile.displayName,
