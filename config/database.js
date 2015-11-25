@@ -13,6 +13,6 @@ if (!env.MONGOLAB_URI) {
   });
 }
 
-mongoose.connect(MONGOLAB_URI);
+mongoose.connect(dbUri);
 
 module.exports = mongoose;
