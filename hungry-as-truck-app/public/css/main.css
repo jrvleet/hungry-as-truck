@@ -32,6 +32,7 @@ a:active {
 	margin: 40px;
 }
 #logout {
+  color: #ecf0f1;
   float: right;
 }
 
@@ -57,6 +58,7 @@ a:active {
 
 
 body {
+  margin-top: 20px;
   background-color: #c0392b;
   color: #ecf0f1;
   font-size: 14px;
@@ -77,5 +79,14 @@ a { color: #ecf0f1; }
   margin-bottom: 50px;
 }
 
-
-
+#hat-logo {
+  margin: 5px;
+  background-image: url('/assets/HAT_logo_OR_inv.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 65px;
+  width: 120px;
+  text-indent: 100%;
+  display: inline-block;
+  /*border: 1px solid black;*/
+}
