@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('../partials/head') %>
+</head>
+<header>
+<%- include('../partials/header') %>
+</header>
+<body>
+  <h1>Welcome to Hungry as Truck</h1>
+
+
+  <main>
+  <div class="buttons">
+  <% if (user === undefined) { %>
+
+  <p class="iAm">I am a...</p>
+  <a class="btn btn-primary" href="/hp/facebook">Hungry Person</a>
+  <a class="btn btn-primary" href="/to/facebook">Truck Owner</a>
+
+   <% } %>
+
+  </div>
+
+  </main>
+
+  <% if (user !== undefined) { %>
+
+    <div id="map"></div>
+
+  <% } %>
+
+  <%- include('../partials/scripts') %>
+
+</body>
+</html>
