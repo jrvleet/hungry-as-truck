@@ -25,8 +25,15 @@
   </main>
 
   <% if (user !== undefined) { %>
+    <% if (user.trucks) { %>
+      <select name="select">
+        <% user.trucks.forEach(function(truck) { %>
+          <option value="truck.name">truck.name</option>
+       <% }); %>
+      </select>
+    <% } %>
 
-    <div id="map"></div>
+      <div id="map"></div>
 
   <% } %>
 
