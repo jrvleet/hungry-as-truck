@@ -12,14 +12,22 @@
 
 [Trello](https://trello.com/b/jMLFbuxz/hungry-as-truck)
 
-##Synopsis
+##The Problem
+In larger citities and more populated areas, there is a plethora of great foodtrucks.
 
+-But where are they?
 
-Our app is for connecting hungry people with food trucks. Hungry people will be able to log in and see the most up-to-date information about the locations of food trucks near them or specify other locations where they would like to find food trucks. Truck owners will be able to update hungry people instantly about the locations of their trucks.
+-When will they be near me?
 
-##Motivation
+-How long will they be at that location?
 
-There are other food trucks apps out there but they are ugly, clunky and not optimized for mobile use. Our app is streamlined, intuitive to use, and geared toward mobile use. No other food truck app connects food trucks and hungry people as directly as ours.
+##Our Solution
+Using the Google Maps API, our team is creating a streamlined, easy-to-use moible application that connects hungry mother-truckers with food trucks in their area in real time. These hungry users can view their current location in a map view and all the foodtrucks located around them. Clicking on one of the foodtruck icons on the map will pull up that foodtruck's profile which inludes the foodtruck's name, the address of where its located, pictures of their truck and food, a menu, and the amount of time they will be serving food at that specific location.
+
+Foodtruck operators will also have accounts within the app. They will be able to post their new locations each day, edit their profile(pictures, menu items, specials, duration at a certain location), and modify their location each day.
+
+##Traction
+Hungry As Truck(HAT) aims to help both food truck owners AND hungry mother-truckers, allowing us to market to both groups effectively. Recent trends show a surge in apps in the food arena, such as restaurant finders, food delievery services, restuarant reservations, etc.. But nothing prominent in the app store has appeared in the aid the  foodtruck world. Surveys indicate that an app like HAT would be highly
 
 
 ##MVP user stories
