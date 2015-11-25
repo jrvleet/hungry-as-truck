@@ -10,65 +10,61 @@ module.exports = function(passport) {
       clientSecret: process.env.FACEBOOK_APP_SECRET,
       callbackURL: process.env.FB_CB_URL,
       profileFields: ['id', 'displayName', 'photos', 'email'],
-      enableProof: true
+      enableProof: true,
+      passReqToCallback: true
     },
-    function(accessToken, refreshToken, profile, done) {
-            //check user table for anyone with a facebook ID of profile.id
-            var isTrucker = globals.truckerAuth.shift();
-
-            if(isTrucker){
-              TruckOwner.findOne({
-                  facebookId: profile.id
-              }, function(err, user) {
-                  if (err) {
-                      return done(err);
-                  }
-                  //No user was found... so create a new user with values from Facebook (all the profile. stuff)
-                  if (!user) {
-                      user = new TruckOwner({
-                          photo: profile.photos[0].value,
-                          name: profile.displayName,
-                          email: profile.emails[0].value,
-                          facebookId: profile.id
-                      });
-                      user.save(function(err) {
-                          if (err) console.log(err);
-                          return done(err, user);
-                      });
-                  } else {
-                      //found user. Return
-                      return done(err, user);
-                  }
-              });
-            } else {
-
-              HungryPerson.findOne({
-                  facebookId: profile.id
-              }, function(err, user) {
-                  if (err) {
-                      return done(err);
-                  }
-                  //No user was found... so create a new user with values from Facebook (all the profile. stuff)
-                  if (!user) {
-                      user = new HungryPerson({
-                          photo: profile.photos[0].value,
-                          name: profile.displayName,
-                          email: profile.emails[0].value,
-                          facebookId: profile.id
-                      });
-                      user.save(function(err) {
-                          if (err) console.log(err);
-                          return done(err, user);
-                      });
-                  } else {
-                      //found user. Return
-                      return done(err, user);
-                  }
-              });
+    function(req, accessToken, refreshToken, profile, done) {
+      if(req.session.isTrucker){
+        TruckOwner.findOne({
+            facebookId: profile.id
+        }, function(err, user) {
+            if (err) {
+                return done(err);
             }
-
-        }
-    ));
+            //No user was found... so create a new user with values from Facebook (all the profile. stuff)
+            if (!user) {
+                user = new TruckOwner({
+                    photo: profile.photos[0].value,
+                    name: profile.displayName,
+                    email: profile.emails[0].value,
+                    facebookId: profile.id
+                });
+                user.save(function(err) {
+                    if (err) console.log(err);
+                    return done(err, user);
+                });
+            } else {
+                //found user. Return
+                return done(err, user);
+            }
+        });
+      } else {
+        HungryPerson.findOne({
+            facebookId: profile.id
+        }, function(err, user) {
+            if (err) {
+                return done(err);
+            }
+            //No user was found... so create a new user with values from Facebook (all the profile. stuff)
+            if (!user) {
+                user = new HungryPerson({
+                    photo: profile.photos[0].value,
+                    name: profile.displayName,
+                    email: profile.emails[0].value,
+                    facebookId: profile.id
+                });
+                user.save(function(err) {
+                    if (err) console.log(err);
+                    return done(err, user);
+                });
+            } else {
+                //found user. Return
+                return done(err, user);
+            }
+        });
+      }
+    })
+  );
 
   passport.serializeUser(function(user, done) {
     done(null, user.id);
