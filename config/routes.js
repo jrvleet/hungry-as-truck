@@ -38,12 +38,12 @@ module.exports = function(app, passport) {
   }
 
   function setTrucker(req, res, next) {
-    globals.truckerAuth.push(true);
+    req.session.isTrucker = true;
     next();
   }
 
   function setHungry(req, res, next) {
-    globals.truckerAuth.push(false);
+    req.session.isTrucker = false;
     next();
   }
 
