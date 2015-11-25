@@ -5,13 +5,18 @@ var express = require('express'),
 var welcomeController = require('../controllers/welcome');
 var hungryPeopleController   = require('../controllers/hungrypeople');
 var truckOwnersController   = require('../controllers/truckowners');
+var globals = require('./globals');
+
 
 module.exports = function(app, passport) {
   // define an Express router to use with ALL ('/') routes
   app.use('/', router);
 
   // oauth paths:
-  router.get('/auth/facebook',
+  router.get('/to/facebook', setTrucker,
+    passport.authenticate('facebook', {authType: 'reauthenticate', scope: ['email']}));
+
+  router.get('/hp/facebook', setHungry,
     passport.authenticate('facebook', {authType: 'reauthenticate', scope: ['email']}));
 
   router.get('/auth/facebook/callback',
@@ -30,6 +35,16 @@ module.exports = function(app, passport) {
   function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
     res.redirect('/login')
+  }
+
+  function setTrucker(req, res, next) {
+    globals.truckerAuth.push(true);
+    next();
+  }
+
+  function setHungry(req, res, next) {
+    globals.truckerAuth.push(false);
+    next();
   }
 
   // root path:
