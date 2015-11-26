@@ -28,7 +28,7 @@
     <% if (user.trucks) { %>
       <select name="select">
         <% user.trucks.forEach(function(truck) { %>
-          <option value="truck.name">truck.name</option>
+          <option> <%= truck.name %> </option> %>
        <% }); %>
       </select>
     <% } %>
