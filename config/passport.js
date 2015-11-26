@@ -24,7 +24,7 @@ module.exports = function(passport) {
             if (!user) {
                 user = new TruckOwner({
                     photo: profile.photos[0].value,
-                    name: profile.displayName,
+                    orgName: profile.displayName,
                     email: profile.emails[0].value,
                     facebookId: profile.id
                 });
