@@ -1,5 +1,7 @@
 var _ = require('lodash');
 
+require('dotenv').load();
+
 var localEnvVars = {
   TITLE:      'hungry-as-truck-app',
   SAFE_TITLE: 'hungry-as-truck-app'

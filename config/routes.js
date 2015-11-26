@@ -5,7 +5,6 @@ var express = require('express'),
 var welcomeController = require('../controllers/welcome');
 var hungryPeopleController   = require('../controllers/hungrypeople');
 var truckOwnersController   = require('../controllers/truckowners');
-var globals = require('./globals');
 
 
 module.exports = function(app, passport) {

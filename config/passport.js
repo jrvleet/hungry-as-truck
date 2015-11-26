@@ -1,7 +1,6 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
 var HungryPerson = require('../models/hungryperson');
 var TruckOwner = require('../models/truckowner');
-var globals = require('./globals');
 
 module.exports = function(passport) {
 
