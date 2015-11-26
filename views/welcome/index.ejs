@@ -4,7 +4,7 @@
   <%- include('../partials/head') %>
 </head>
 <header>
-<%- include('../partials/header') %>
+  <%- include('../partials/header') %>
 </header>
 <body>
   <h1>Welcome to Hungry as Truck</h1>
@@ -32,7 +32,8 @@
        <% }); %>
       </select>
     <% } %>
-
+      <input type="text" id="address">
+      <input type="submit" id="geocode">
       <div id="map"></div>
 
   <% } %>
