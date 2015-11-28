@@ -3,6 +3,7 @@ console.log('Great Job!');
 var map;
 var currentLocation;
 var geocoder;
+var newTruckTemplate = _.template($('#new-truck').html());
 
 var currentLocater = function() {
   if(navigator.geolocation) {
@@ -40,5 +41,10 @@ function codeAddress() {
     }
   });
 }
+
+$('#add-truck-btn').on('click', function(){
+  $('#truck-form').html(newTruckTemplate());
+ console.log(newTruckTemplate());
+});
 
 document.getElementById("geocode").addEventListener("click", codeAddress);

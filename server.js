@@ -25,13 +25,14 @@ app.set('view engine', 'ejs');
 
 // Create local variables for use thoughout the application.
 app.locals.title = app.get('title');
+app.locals._ = require('lodash');
 
 // Logging layer.
 app.use(logger('dev'));
 
 // Helper layer (parses the requests, and adds further data).
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser('notsosecretnowareyou'));
 app.use(session({

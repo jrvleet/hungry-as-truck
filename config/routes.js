@@ -13,10 +13,10 @@ module.exports = function(app, passport) {
 
   // oauth paths:
   router.get('/to/facebook', setTrucker,
-    passport.authenticate('facebook', {authType: 'reauthenticate', scope: ['email']}));
+    passport.authenticate('facebook', { scope: ['email'] }));
 
   router.get('/hp/facebook', setHungry,
-    passport.authenticate('facebook', {authType: 'reauthenticate', scope: ['email']}));
+    passport.authenticate('facebook', { scope: ['email'] }));
 
   router.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/login' }),
@@ -48,6 +48,8 @@ module.exports = function(app, passport) {
 
   // root path:
   router.get('/',welcomeController.index, ensureAuthenticated);
+
+  router.get('/addtruck', truckOwnersController.addTruck);
 
   // users resource paths:
   router.get('/hungrypeople',     hungryPeopleController.index);

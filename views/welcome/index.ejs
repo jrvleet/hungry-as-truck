@@ -33,12 +33,16 @@
       </select>
       <input type="text" id="address">
       <input type="submit" id="geocode">
+      <a class="btn btn-default" id="add-truck-btn">Add Truck</a>
+      <form id="truck-form">
+
+      </form>
     <% } %>
 
       <div id="map"></div>
 
   <% } %>
-
+  <%- include('../partials/templates') %>
   <%- include('../partials/scripts') %>
 
 </body>
