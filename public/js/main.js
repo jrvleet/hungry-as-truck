@@ -4,7 +4,10 @@ var map;
 var currentLocation;
 var geocoder;
 
-var currentLocater = function() {
+document.getElementById("geocode").addEventListener("click", codeAddress);
+
+function initMap() {
+  geocoder = new google.maps.Geocoder;
   if(navigator.geolocation) {
     browserSupportFlag = true;
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -19,11 +22,6 @@ var currentLocater = function() {
       });
     });
   }
-};
-
-function initMap() {
-  currentLocater();
-  geocoder = new google.maps.Geocoder;
 }
 
 function codeAddress() {
@@ -41,4 +39,14 @@ function codeAddress() {
   });
 }
 
-document.getElementById("geocode").addEventListener("click", codeAddress);
+$.get({
+  url: 'https://api.mongolab.com/api/1/databases/hungry-as-truck/collections?apiKey=KWQXJayU7JjD2GlZ899kxg_UrTYtX4oc',
+  type: 'get',
+  data: 'json', // mongod is expecting the parameter name to be called "jsonp"
+  success: function (data) {
+    console.log('success', data);
+  },
+  error: function (errorThrown) {
+    console.log('error', errorThrown);
+  }
+});
