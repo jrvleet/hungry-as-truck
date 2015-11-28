@@ -11,12 +11,14 @@
 
 
   <main>
-  <div class="buttons">
+  <div class="buttons container">
   <% if (user === undefined) { %>
 
   <p class="iAm">I am a...</p>
-  <a class="btn btn-primary" href="/hp/facebook">Hungry Person</a>
-  <a class="btn btn-primary" href="/to/facebook">Truck Owner</a>
+  <div class="row">
+    <a class="btn btn-primary col-lg-6" href="/hp/facebook">Hungry Person</a>
+    <a class="btn btn-primary col-lg-6" href="/to/facebook">Truck Owner</a>
+  </div>
 
    <% } %>
 

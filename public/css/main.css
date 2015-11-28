@@ -21,9 +21,13 @@ a:active {
 	border-color: #f39c12;
 }
 
-.btn-btn-default {
+/*.btn-btn-default {
 	padding: 15px;
 	margin: 30px;
+}*/
+
+.btn-primary {
+  margin: 10px;
 }
 
 .buttons {
@@ -31,6 +35,16 @@ a:active {
 	padding: 50px;
 	margin: 40px;
 }
+
+.container {
+  /*margin: 0 auto;*/
+  /*text-align: center;*/
+}
+
+.row {
+  text-align: center;
+}
+
 #logout {
   color: #ecf0f1;
   float: right;
@@ -40,7 +54,6 @@ a:active {
 .navbar-toggle:hover {
 	border: none;
 	background: none;
-	/*.icon-bar { height: 3px; }*/
 }
 
 #logo-name {
@@ -48,7 +61,6 @@ a:active {
 }
 
 .navbar-header a {
-	/*text-transform: uppercase;*/
   	font-size: 24px;
   	color: #8e44ad;
   	padding: 15px 20px;
@@ -88,5 +100,4 @@ a { color: #ecf0f1; }
   width: 120px;
   text-indent: 100%;
   display: inline-block;
-  /*border: 1px solid black;*/
 }
