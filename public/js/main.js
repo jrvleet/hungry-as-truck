@@ -38,15 +38,3 @@ function codeAddress() {
     }
   });
 }
-
-$.get({
-  url: 'https://api.mongolab.com/api/1/databases/hungry-as-truck/collections?apiKey=KWQXJayU7JjD2GlZ899kxg_UrTYtX4oc',
-  type: 'get',
-  data: 'json', // mongod is expecting the parameter name to be called "jsonp"
-  success: function (data) {
-    console.log('success', data);
-  },
-  error: function (errorThrown) {
-    console.log('error', errorThrown);
-  }
-});
