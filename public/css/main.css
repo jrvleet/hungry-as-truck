@@ -1,11 +1,17 @@
+/*@font-face {
+  
+  src:url(assets/PoiretOne-Regular.ttf);
+  font-family: PoiretOne;
+}*/
+
 html,
 body {
-  box-sizing: border-box;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
 }
+
 
 a:link,
 #logo-name:hover,
@@ -21,29 +27,21 @@ a:active {
 	border-color: #f39c12;
 }
 
-/*.btn-btn-default {
-	padding: 15px;
-	margin: 30px;
-}*/
+.iAm {
+  text-align: center;
+}
 
 .btn-primary {
   margin: 10px;
 }
 
-.buttons {
-	text-align: center;
-	padding: 50px;
-	margin: 40px;
+
+.container-fluid {
+  
+  padding: 10px;
+  margin: 0 auto;
 }
 
-.container {
-  /*margin: 0 auto;*/
-  /*text-align: center;*/
-}
-
-.row {
-  text-align: center;
-}
 
 #logout {
   color: #ecf0f1;
@@ -70,7 +68,8 @@ a:active {
 
 
 body {
-  margin-top: 20px;
+  margin-top: 30px;
+  /*background-image: url('assets/swirl_pattern.png');*/
   background-color: #c0392b;
   color: #ecf0f1;
   font-size: 14px;
@@ -79,7 +78,8 @@ body {
 
 
 h1 {
-	text-align: center;
+  font-family: "Montserrat";
+  text-align: center;
 }
 
 a { color: #ecf0f1; }

@@ -2,6 +2,7 @@
 <html>
 <head>
   <%- include('../partials/head') %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <header>
   <%- include('../partials/header') %>
@@ -10,19 +11,18 @@
   <h1>Welcome to Hungry as Truck</h1>
 
 
-  <main>
-  <div class="buttons container">
+  <main class="container-fluid">
   <% if (user === undefined) { %>
 
-  <p class="iAm">I am a...</p>
+    
+  <p class="iAm"><strong>I am a...</strong></p>
   <div class="row">
-    <a class="btn btn-primary col-lg-6" href="/hp/facebook">Hungry Person</a>
-    <a class="btn btn-primary col-lg-6" href="/to/facebook">Truck Owner</a>
+    <a class="btn btn-primary col-md-4" href="/hp/facebook">Hungry Person</a>
+    <a class="btn btn-primary col-md-4" href="/to/facebook">Truck Owner</a>
   </div>
+  
 
    <% } %>
-
-  </div>
 
   </main>
 
