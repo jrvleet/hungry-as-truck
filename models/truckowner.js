@@ -14,6 +14,7 @@ var truckOwnerSchema = new mongoose.Schema({
   orgName: String,
   address: String,
   email: String,
+  facebookId: String,
   trucks: [truckSchema],
 });
 

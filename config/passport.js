@@ -1,7 +1,6 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
 var HungryPerson = require('../models/hungryperson');
 var TruckOwner = require('../models/truckowner');
-var globals = require('./globals');
 
 module.exports = function(passport) {
 
@@ -25,7 +24,7 @@ module.exports = function(passport) {
             if (!user) {
                 user = new TruckOwner({
                     photo: profile.photos[0].value,
-                    name: profile.displayName,
+                    orgName: profile.displayName,
                     email: profile.emails[0].value,
                     facebookId: profile.id
                 });

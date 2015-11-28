@@ -4,7 +4,7 @@
   <%- include('../partials/head') %>
 </head>
 <header>
-<%- include('../partials/header') %>
+  <%- include('../partials/header') %>
 </header>
 <body>
   <h1>Welcome to Hungry as Truck</h1>
@@ -25,8 +25,17 @@
   </main>
 
   <% if (user !== undefined) { %>
+    <% if (user.trucks) { %>
+      <select name="select">
+        <% user.trucks.forEach(function(truck) { %>
+          <option> <%= truck.name %> </option> %>
+       <% }); %>
+      </select>
+      <input type="text" id="address">
+      <input type="submit" id="geocode">
+    <% } %>
 
-    <div id="map"></div>
+      <div id="map"></div>
 
   <% } %>
 
