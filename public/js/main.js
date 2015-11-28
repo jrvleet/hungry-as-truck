@@ -4,7 +4,10 @@ var map;
 var currentLocation;
 var geocoder;
 
-var currentLocater = function() {
+document.getElementById("geocode").addEventListener("click", codeAddress);
+
+function initMap() {
+  geocoder = new google.maps.Geocoder;
   if(navigator.geolocation) {
     browserSupportFlag = true;
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -19,11 +22,6 @@ var currentLocater = function() {
       });
     });
   }
-};
-
-function initMap() {
-  currentLocater();
-  geocoder = new google.maps.Geocoder;
 }
 
 function codeAddress() {
@@ -40,5 +38,3 @@ function codeAddress() {
     }
   });
 }
-
-document.getElementById("geocode").addEventListener("click", codeAddress);
