@@ -5,6 +5,7 @@ var currentLocation;
 var geocoder;
 var newTruckTemplate = _.template($('#new-truck').html());
 var truckOwners;
+var truckIcon = './assets/foodTruckIconSM_R.png'
 
 
 document.getElementById("geocode").addEventListener("click", codeAddress);
@@ -54,7 +55,6 @@ $.ajax({
   type: "get",
   data: 'json',
   success: function (data) {
-    console.log(data);
     data.forEach(function(truckOwner) {
       truckOwner.trucks.forEach(function(truck) {
         var address = truck.location;
@@ -62,7 +62,8 @@ $.ajax({
           if (status == google.maps.GeocoderStatus.OK) {
             new google.maps.Marker({
               map: map,
-              position: results[0].geometry.location
+              position: results[0].geometry.location,
+              icon: truckIcon
             });
           }
           else {
