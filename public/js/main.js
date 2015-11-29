@@ -48,20 +48,9 @@ function codeAddress() {
 $('#add-truck-btn').on('click', function(evt){
   console.log(evt);
   $('#truck-form').html(newTruckTemplate());
-  $('truck-form').submit(function(evt) {
-    console.log(evt);
-    evt.preventDefault();
-    var $truckName = $('#truck-name').val();
-    var $truckLocation = $('#truck-location').val();
-    var data = {name: $truckName, location: $truckLocation};
-    $.ajax({
-      url: 'http://localhost:3000/truckowners/id',
-      type: 'put',
-      data: data
-    }).done(function(truck) {
-      console.log(truck)
-    });
-  });
+});
+$('truck-form').on('submit', function(evt) {
+  console.log(evt);
 });
 
 
