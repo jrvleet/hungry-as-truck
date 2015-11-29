@@ -6,8 +6,6 @@ var geocoder;
 var truckOwners;
 var truckIcon = './assets/foodTruckIconSM_R.png'
 
-document.getElementById("geocode").addEventListener("click", codeAddress);
-
 function initMap() {
   geocoder = new google.maps.Geocoder;
   if(navigator.geolocation) {
@@ -64,7 +62,9 @@ $.ajax({
       })
     })
   },
-  error: function (XMLHttpRequest, textStatus, errorThrown) {
+  error: function (textStatus, errorThrown) {
     alert("Status: " + textStatus + "    Error:" + errorThrown);
   }
 });
+
+document.getElementById("geocode").addEventListener("click", codeAddress);
