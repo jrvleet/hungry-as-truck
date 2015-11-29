@@ -56,7 +56,7 @@ $('truck-form').on('submit', function(evt) {
   var $truckLocation = $('#truck-location').val();
   var data = {name: $truckName, location: $truckLocation};
   $.ajax({
-    url: 'http://localhost:3000/truckowners/' + parent.data('id'),
+    url: '/truckowners/5659416b4057f2e90bfcfbc2',
     type: 'PUT',
     data: data
   }).success(function(data) {
