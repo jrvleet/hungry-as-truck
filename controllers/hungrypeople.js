@@ -2,9 +2,18 @@
 var hungryperson = require("../models/hungryperson");
 
 var index = function(req, res, next){
-
-  hungryperson.find({}, function(error, hungrypeople){
+  hungryperson.find({}, function(err, hungrypeople){
+    if (err) {
+      res.send(err);
+    }
     res.send(hungrypeople);
+  });
+};
+
+var show = function(req, res, next){
+  hungryperson.findById(req.params.id, function(error, hungryperson){
+    if (error) res.json({message: 'Could not find hungryperson because ' + error});
+    res.send(hungryperson);
   });
 };
 
@@ -18,27 +27,28 @@ var create = function(req, res) {
 };
 
 var update = function(req, res) {
-  req.record.set(req.body);
-  req.record.save(function (err,record) {
+  hungryperson.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(err, record){
+    if(err) {
+      res.send(err);
+    };
     res.send(record);
   });
 };
 
 var destroy = function(req, res) {
-  req.record.remove(function(err, record) {
-    res.send(record);
+  hungryperson.findByIdAndRemove(req.params.id, function(err, record){
+    if(err){
+      res.send(err);
+    };
+    res.send(record.name + " has been deleted!");
   });
 };
 
-var show = function(req, res, next){
-  hungryperson.findById(req.params.id, function(error, hungryperson){
-    if (error) res.json({message: 'Could not find hungryperson because ' + error});
-    res.send(hungryperson);
-  });
-};
 
 module.exports = {
   index: index,
   show:  show,
-  delete: destroy
+  create: create,
+  update: update,
+  destroy: destroy
 };
