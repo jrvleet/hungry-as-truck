@@ -4,7 +4,7 @@ var map;
 var currentLocation;
 var geocoder;
 var truckOwners;
-var truckIcon = './assets/foodTruckIconSM_R.png'
+var truckIcon = './assets/foodTruckIconSM_R.png';
 
 function initMap() {
   geocoder = new google.maps.Geocoder;
