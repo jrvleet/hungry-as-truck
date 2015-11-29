@@ -23,7 +23,8 @@ function initMap() {
       });
     });
   }
-}
+
+};
 
 function updateLocation() {
   $newLocation = $('#address').val();
@@ -69,7 +70,7 @@ $.ajax({
     })
   },
   error: function (textStatus, errorThrown) {
-    alert("Status: " + textStatus + "    Error:" + errorThrown);
+    alert("Status: " + textStatus + "Error: " + errorThrown);
   }
 });
 
