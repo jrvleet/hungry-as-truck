@@ -5,7 +5,7 @@ var currentLocation;
 var geocoder;
 var newTruckTemplate = _.template($('#new-truck').html());
 var truckOwners;
-var truckIcon = './assets/foodTruckIconSM_R.png'
+var truckIcon = './assets/foodTruckIconSM_R.png';
 
 
 document.getElementById("geocode").addEventListener("click", codeAddress);

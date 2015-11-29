@@ -54,8 +54,15 @@ module.exports = function(app, passport) {
 
 
   // users resource paths:
-  router.get('/hungrypeople',     hungryPeopleController.index);
-  router.get('/hungrypeople/:id', hungryPeopleController.show);
-  router.get('/truckowners',      truckOwnersController.index);
-  router.get('/truckowners/:id',  truckOwnersController.show);
+  router.get('/hungrypeople',        hungryPeopleController.index);
+  router.post('/hungrypeople',       hungryPeopleController.create);
+  router.get('/hungrypeople/:id',    hungryPeopleController.show);
+  router.put('/hungrypeople/:id',    hungryPeopleController.update);
+  router.delete('/hungrypeople/:id', hungryPeopleController.destroy);
+
+  router.get('/truckowners',        truckOwnersController.index);
+  router.post('/truckowners',        truckOwnersController.create);
+  router.get('/truckowners/:id',    truckOwnersController.show);
+  router.put('/truckowners/:id',    truckOwnersController.update);
+  router.delete('/truckowners/:id', truckOwnersController.destroy);
 };
