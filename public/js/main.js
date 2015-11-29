@@ -3,6 +3,8 @@ console.log('Great Job!');
 var map;
 var currentLocation;
 var geocoder;
+var truckOwners;
+var truckIcon = './assets/foodTruckIconSM_R.png'
 
 document.getElementById("geocode").addEventListener("click", codeAddress);
 
@@ -38,3 +40,31 @@ function codeAddress() {
     }
   });
 }
+
+$.ajax({
+  url: "http://localhost:3000/truckowners",
+  type: "get",
+  data: 'json',
+  success: function (data) {
+    data.forEach(function(truckOwner) {
+      truckOwner.trucks.forEach(function(truck) {
+        var address = truck.location;
+        geocoder.geocode( { 'address': address }, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              icon: truckIcon
+            });
+          }
+          else {
+            alert("Geocode was not successful for the following reason: " + status);
+          }
+        });
+      })
+    })
+  },
+  error: function (XMLHttpRequest, textStatus, errorThrown) {
+    alert("Status: " + textStatus + "    Error:" + errorThrown);
+  }
+});
