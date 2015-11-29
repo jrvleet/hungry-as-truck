@@ -24,7 +24,8 @@ function initMap() {
       });
     });
   }
-}
+  
+};
 
 function codeAddress() {
   var address = document.getElementById("address").value;
@@ -64,6 +65,9 @@ $.ajax({
       })
     })
   },
+
+  
+
   error: function (XMLHttpRequest, textStatus, errorThrown) {
     alert("Status: " + textStatus + "    Error:" + errorThrown);
   }
