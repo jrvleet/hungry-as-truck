@@ -47,9 +47,8 @@ module.exports = function(app, passport) {
   }
 
   // root path:
-  router.get('/',welcomeController.index, function (user){
-    router.put('/truckowners/:id', truckOwnersController.update);
-  });
+  router.get('/',welcomeController.index);
+  router.put('/truckowners/:id', truckOwnersController.addTruck);
 
 
 
