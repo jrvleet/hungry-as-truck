@@ -45,7 +45,6 @@ function codeAddress() {
 
 $('#add-truck-btn').on('click', function(){
   $('#truck-form').html(newTruckTemplate());
- console.log(newTruckTemplate());
 });
 
 document.getElementById("geocode").addEventListener("click", codeAddress);
