@@ -16,6 +16,7 @@ var show = function(req, res, next){
 };
 
 var addTruck = function(req, res, next) {
+  eval(locus);
 };
 
 module.exports = {

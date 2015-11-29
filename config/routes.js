@@ -31,10 +31,10 @@ module.exports = function(app, passport) {
     res.redirect('/');
   });
 
-  function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) { return next(); }
-    res.redirect('/login')
-  }
+  // function ensureAuthenticated(req, res, next) {
+  //   if (req.isAuthenticated()) { return next(); }
+  //   res.redirect('/login')
+  // }
 
   function setTrucker(req, res, next) {
     req.session.isTrucker = true;
@@ -47,9 +47,11 @@ module.exports = function(app, passport) {
   }
 
   // root path:
-  router.get('/',welcomeController.index, ensureAuthenticated);
+  router.get('/',welcomeController.index, function (user){
+    router.put('/truckowners/:id', truckOwnersController.addTruck);
+  });
 
-  router.get('/addtruck', truckOwnersController.addTruck);
+
 
   // users resource paths:
   router.get('/hungrypeople',     hungryPeopleController.index);

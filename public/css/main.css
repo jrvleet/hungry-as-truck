@@ -1,5 +1,5 @@
 /*@font-face {
-  
+
   src:url(assets/PoiretOne-Regular.ttf);
   font-family: PoiretOne;
 }*/
@@ -37,7 +37,7 @@ a:active {
 
 
 .container-fluid {
-  
+
   padding: 10px;
   margin: 0 auto;
 }
@@ -71,7 +71,7 @@ body {
   margin-top: 30px;
   /*background-image: url('assets/swirl_pattern.png');*/
   background-color: #c0392b;
-  color: #ecf0f1;
+  /*color: #ecf0f1;*/
   font-size: 14px;
   padding: 50px;
 }
