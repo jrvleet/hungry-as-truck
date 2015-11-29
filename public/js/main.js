@@ -3,7 +3,8 @@ console.log('Great Job!');
 var map;
 var currentLocation;
 var geocoder;
-var truckOwners;
+var $newLocation;
+var $truck;
 var truckIcon = './assets/foodTruckIconSM_R.png';
 
 function initMap() {
@@ -24,29 +25,34 @@ function initMap() {
   }
 }
 
-function codeAddress() {
-  var address = document.getElementById("address").value;
-  geocoder.geocode( { 'address': address}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      map.setCenter(results[0].geometry.location);
-      currentLocation = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
-    } else {
-      alert("Geocode was not successful for the following reason: " + status);
+function updateLocation() {
+  $newLocation = $('#address').val();
+  $truck = $('select').val();
+  $.ajax({
+    url: "http://localhost:3000/truckowners",
+    type: "get",
+    data: 'json',
+    success: function (data) {
+      data.forEach(function(truckOwner) {
+        truckOwner.trucks.forEach(function(truck) {
+          console.log(truck);
+        })
+      })
     }
   });
-}
+};
 
 $.ajax({
   url: "http://localhost:3000/truckowners",
   type: "get",
   data: 'json',
   success: function (data) {
+    // Loop through truck owners to get to trucks
     data.forEach(function(truckOwner) {
+      // Loop through trucks to get locations
       truckOwner.trucks.forEach(function(truck) {
         var address = truck.location;
+        // Geocode the address from truck.location, drop a pin there
         geocoder.geocode( { 'address': address }, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             new google.maps.Marker({
@@ -68,3 +74,18 @@ $.ajax({
 });
 
 document.getElementById("geocode").addEventListener("click", codeAddress);
+
+// function codeAddress() {
+//   var address = document.getElementById("address").value;
+//   geocoder.geocode( { 'address': address}, function(results, status) {
+//     if (status == google.maps.GeocoderStatus.OK) {
+//       map.setCenter(results[0].geometry.location);
+//       currentLocation = new google.maps.Marker({
+//           map: map,
+//           position: results[0].geometry.location
+//       });
+//     } else {
+//       alert("Geocode was not successful for the following reason: " + status);
+//     }
+//   });
+// }
