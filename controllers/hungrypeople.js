@@ -8,6 +8,28 @@ var index = function(req, res, next){
   });
 };
 
+var create = function(req, res) {
+  hungryperson.create(req.body, function(err, record){
+    if (err){
+      res.send(err);
+    }
+    res.send(record);
+  });
+};
+
+var update = function(req, res) {
+  req.record.set(req.body);
+  req.record.save(function (err,record) {
+    res.send(record);
+  });
+};
+
+var destroy = function(req, res) {
+  req.record.remove(function(err, record) {
+    res.send(record);
+  });
+};
+
 var show = function(req, res, next){
   hungryperson.findById(req.params.id, function(error, hungryperson){
     if (error) res.json({message: 'Could not find hungryperson because ' + error});
@@ -17,5 +39,6 @@ var show = function(req, res, next){
 
 module.exports = {
   index: index,
-  show:  show
+  show:  show,
+  delete: destroy
 };
