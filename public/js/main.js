@@ -109,8 +109,9 @@ $('#add-truck-btn').on('click', function(evt){
     var $truckLocation = $('#truck-location').val();
     var data = {name: $truckName, location: $truckLocation};
     $.ajax({
-      url: '/truckowners/5659416b4057f2e90bfcfbc2',
+      url: '/truckowners/' + $("form[value]").attr("value"),
       type: 'PUT',
+      dataType: 'json',
       data: data
     }).done(function(data) {
       console.log(data);
