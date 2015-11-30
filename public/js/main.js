@@ -61,14 +61,14 @@ function initMap() {
                 }
 
                 else {
-                  alert("Geocode was not successful for the following reason: " + status);
+                  console.log("Geocode was not successful for the following reason: " + status);
                 }
               });
             })
           })
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-          alert("Status: " + textStatus + "    Error:" + errorThrown);
+          console.log("Status: " + textStatus + "    Error:" + errorThrown);
         }
       });
     });
