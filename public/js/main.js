@@ -50,20 +50,20 @@ function updateLocation() {
 $('#add-truck-btn').on('click', function(evt){
   console.log(evt);
   $('#truck-form').html(newTruckTemplate());
-});
-$('truck-form').on('submit', function(evt) {
-  console.log(evt);
-  evt.preventDefault();
-  var $truckName = $('#truck-name').val();
-  var $truckLocation = $('#truck-location').val();
-  var data = {name: $truckName, location: $truckLocation};
-  $.ajax({
-    url: '/truckowners/5659416b4057f2e90bfcfbc2',
-    type: 'PUT',
-    data: data
-  }).success(function(data) {
-    console.log(data);
-  })
+  $('truck-form').submit(function(evt) {
+    console.log(evt);
+    evt.preventDefault();
+    var $truckName = $('#truck-name').val();
+    var $truckLocation = $('#truck-location').val();
+    var data = {name: $truckName, location: $truckLocation};
+    $.ajax({
+      url: 'http://localhost:3000/truckowners/5659416b4057f2e90bfcfbc2',
+      type: 'PUT',
+      data: data
+    }).success(function(data) {
+      console.log(data);
+    })
+  });
 });
 
 
