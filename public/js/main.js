@@ -53,13 +53,9 @@ function initMap() {
                     });
 
                     google.maps.event.addListener(marker, 'click', function() {
-                      infowindow.close(map, marker);
                       infowindow.open(map, marker);
                     });
 
-                    // marker.addListener('click', function() {
-                    //   infowindow.open(map, marker);
-                    // });
                 }
 
                 else {
@@ -94,37 +90,6 @@ function updateLocation() {
     }
   });
 };
-
-$.ajax({
-  url: "http://localhost:3000/truckowners",
-  type: "get",
-  data: 'json',
-  success: function (data) {
-    // Loop through truck owners to get to trucks
-    data.forEach(function(truckOwner) {
-      // Loop through trucks to get locations
-      truckOwner.trucks.forEach(function(truck) {
-        var address = truck.location;
-        // Geocode the address from truck.location, drop a pin there
-        geocoder.geocode( { 'address': address }, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location,
-              icon: truckIcon
-            });
-          }
-          else {
-            alert("Geocode was not successful for the following reason: " + status);
-          }
-        });
-      })
-    })
-  },
-  error: function (textStatus, errorThrown) {
-    alert("Status: " + textStatus + "Error: " + errorThrown);
-  }
-});
 
 document.getElementById("geocode").addEventListener("click", codeAddress);
 
