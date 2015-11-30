@@ -35,12 +35,15 @@
       </select>
       <input type="text" id="address">
       <input type="submit" id="geocode">
+      <a class="btn btn-primary" id="add-truck-btn">Add / Update Trucks</a>
+      <form id="truck-form" value=<%= user._id %>>
+      </form>
     <% } %>
 
       <div id="map"></div>
 
   <% } %>
-
+  <%- include('../partials/templates') %>
   <%- include('../partials/scripts') %>
 
 </body>
