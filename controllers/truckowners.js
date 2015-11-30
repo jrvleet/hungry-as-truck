@@ -28,9 +28,21 @@ var create = function(req, res) {
 
 var update = function(req, res) {
   truckowner.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(err, record){
-    if(err) {
+    if(record.trucks.length > 0){
+      record.trucks.forEach(function(truck) {
+        if(truck.name === req.body.name) {
+          truck.name = req.body.name;
+          truck.location = req.body.location;
+        }
+      });
+    }
+    if(err){
       res.send(err);
-    };
+    }
+    else {
+      record.trucks.push(req.body);
+    }
+    record.save();
     res.send(record);
   });
 };

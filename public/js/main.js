@@ -3,6 +3,8 @@ console.log('Great Job!');
 var map;
 var currentLocation;
 var geocoder;
+var newTruckTemplate = _.template($('#new-truck').html());
+var truckOwners;
 var $newLocation;
 var $truck;
 var truckIcon = './assets/HAT_logo_map_icon.png';
@@ -95,6 +97,29 @@ function updateLocation() {
   });
 };
 
+
+
+$('#add-truck-btn').on('click', function(evt){
+  console.log(evt);
+  $('#truck-form').html(newTruckTemplate());
+  $('#truck-form').submit(function(evt) {
+    console.log(evt);
+    evt.preventDefault();
+    var $truckName = $('#truck-name').val();
+    var $truckLocation = $('#truck-location').val();
+    var data = {name: $truckName, location: $truckLocation};
+    $.ajax({
+      url: '/truckowners/' + $("form[value]").attr("value"),
+      type: 'PUT',
+      dataType: 'json',
+      data: data
+    }).done(function(data) {
+      console.log(data);
+    })
+  });
+});
+
+
 $.ajax({
   url: "http://localhost:3000/truckowners",
   type: "get",
@@ -142,3 +167,4 @@ document.getElementById("geocode").addEventListener("click", codeAddress);
 //     }
 //   });
 // }
+
