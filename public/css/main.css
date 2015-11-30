@@ -18,7 +18,11 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-  color: #2c3e50;
+  color: #ecf0f1;
+}
+
+#content {
+ color: #2c3e50;
 }
 
 .navbar-default {
