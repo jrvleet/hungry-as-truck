@@ -18,7 +18,7 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-  color: #bdc3c7;
+  color: #2c3e50;
 }
 
 .navbar-default {
@@ -66,10 +66,15 @@ a:active {
   	margin-bottom: -1px;
 }
 
+#address,
+#geocode {
+
+  color: #2c3e50;
+}
+
 
 body {
   margin-top: 30px;
-  /*background-image: url('assets/swirl_pattern.png');*/
   background-color: #c0392b;
   /*color: #ecf0f1;*/
   font-size: 14px;
