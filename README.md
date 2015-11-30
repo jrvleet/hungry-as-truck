@@ -9,7 +9,7 @@
 - Jessica Vliet | @jrvleet
 
 
-[Hungry as Truck App](https://hungry-as-truck.herokuapp.com/)
+[Hungry as Truck App](https://quiet-savannah-8403.herokuapp.com)
 
 
 [Trello](https://trello.com/b/jMLFbuxz/hungry-as-truck)
