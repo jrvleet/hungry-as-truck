@@ -34,6 +34,57 @@ Foodtruck operators will also have accounts within the app. They will be able to
 ##Traction
 Hungry As Truck (HAT) aims to help both food truck owners AND hungry mother-truckers, allowing us to market to both groups effectively. Recent trends show a surge in apps in the food arena, such as restaurant finders, food delievery services, restuarant reservations, etc... But nothing prominent in the app store has appeared in the aid the foodtruck world. Surveys indicate that an app like HAT would be highly desired.
 
+##API Documentation
+Model|Method|Parameters|Description|
+----------|-----|-------|----------------|
+truck owner|`show`|`/truckowners/:id`|a user can see a specific truck owners account|
+truck owner|`index`|`/truckowners`|a user can see a list of all truck owners|
+truck owner|`create`|`/truckowners`|A user can create a new truck owner by sending  in proper params
+truck owner|`destroy`|`/truckowner/:id`|a user can delete a truck owners account
+truck owner|`update`|`/truckowners/:id`| a user can update a truck owners profile by passing in given paramaters
+hungry person|`show`|`/hungryperson/:id`|a user can see a specific hungry person account|
+hungry person|`index`|`/hungryperson`|a user can see a list of all hungry person|
+hungry person|`create`|`/hungryperson`|A user can create a new hungry person by sending  in proper params
+hungry person|`destroy`|`/hungryperson/:id`|a user can delete a hungry person account
+hungry person|`update`|`/hungryperson/:id`| a user can update a truck owners profile by passing in given paramaters
+
+##models
+
+###trucks
+
+key|value
+---|---
+name|String
+location|String
+isActive|Boolean
+duration|String
+category|Array
+menu|String
+
+###Trucks Owner
+
+key|value|
+-----|-----|
+orgName| String|
+address|String
+email|String
+facebookId|String
+trucks|Truck Schema
+
+###Hungry People
+
+key|value
+---|---
+facebookId|String
+photo|String
+name|String
+email|String
+favs|Array
+
+
+
+
+
 
 ##MVP user stories
 
